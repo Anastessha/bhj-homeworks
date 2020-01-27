@@ -1,6 +1,5 @@
 'use strict'
 
-let taskControl = document.querySelector('.tasks__control')
 let taskInput = document.getElementById('task__input');
 let taskAdd = document.getElementById('tasks__add');
 let taskList = document.getElementById('tasks__list');
@@ -19,17 +18,18 @@ function add () {
     taskInput.value = '';
 }
 
-taskControl.addEventListener('keydown', (event) => {
-
-    if (event.key === 'Enter' && taskInput.value) {
-        event.preventDefault();
-        add();
+taskInput.addEventListener('keyup', (event) => {
+    event.preventDefault();
+    if (event.key === 'Enter' && taskInput.value != '') {
+        taskInput.value = taskInput.value;
+        add(taskInput.value);
     }
 })
 
 taskAdd.addEventListener('click', (event) => {
-    if (taskInput.value) {
-        event.preventDefault();
-        add();
+    event.preventDefault();
+    if (taskInput.value != '') {
+        taskInput.value = taskInput.value;
+        add(taskInput.value);
     }
 })
