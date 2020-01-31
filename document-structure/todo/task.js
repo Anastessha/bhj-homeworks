@@ -21,7 +21,6 @@ function add () {
 taskInput.addEventListener('keyup', (event) => {
     event.preventDefault();
     if (event.key === 'Enter' && taskInput.value != '') {
-        taskInput.value = taskInput.value;
         add(taskInput.value);
     }
 })
@@ -29,7 +28,6 @@ taskInput.addEventListener('keyup', (event) => {
 taskAdd.addEventListener('click', (event) => {
     event.preventDefault();
     if (taskInput.value != '') {
-        taskInput.value = taskInput.value;
         add(taskInput.value);
     }
 })
