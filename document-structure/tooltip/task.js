@@ -1,19 +1,20 @@
-'use srict'
+'use strict'
 
-let tooltip = document.querySelectorAll('.has-tooltip');
+let tooltip = document.createElement('div');
+tooltip.setAttribute('class', 'tooltip');
+document.body.appendChild(tooltip);
 
+document.body.addEventListener('click', (event) => {
+    let target = event.target;
+    
+    if (target.className != 'has-tooltip') return;
+    
+    event.preventDefault();
+    
+    tooltip.innerText = target.getAttribute('title');
+    tooltip.classList.toggle('tooltip_active');
 
-for (let i = 0; i < tooltip.length; i++) {
-    tooltip[i].addEventListener('click', (event) => {
-
-        event.preventDefault();
-
-        if (tooltip[i].querySelector('.tooltip')) {
-            tooltip[i].querySelector('.tooltip').remove()
-            return
-        } else if (document.querySelector('.tooltip')) {
-            document.querySelector('.tooltip').remove();
-        }
-    })
-}
-
+    target.addEventListener('blur', () => {
+        tooltip.classList.remove('tooltip_active');
+    });
+});
