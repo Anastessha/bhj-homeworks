@@ -12,8 +12,11 @@ document.body.addEventListener('click', (event) => {
     event.preventDefault();
     
     tooltip.innerText = target.getAttribute('title');
+    
     tooltip.classList.toggle('tooltip_active');
 
+    tooltip.style.top = `${top + 10}px`;
+    
     target.addEventListener('blur', () => {
         tooltip.classList.remove('tooltip_active');
     });
