@@ -14,8 +14,10 @@ document.body.addEventListener('click', (event) => {
     tooltip.innerText = target.getAttribute('title');
     
     tooltip.classList.toggle('tooltip_active');
-
-    tooltip.style.top = `${top + 10}px`;
+    
+    let place = target.getBoundingClientRect();
+    tooltip.style.left = place.left + "px";
+    tooltip.style.top = place.top + 20 + "px";
     
     target.addEventListener('blur', () => {
         tooltip.classList.remove('tooltip_active');
